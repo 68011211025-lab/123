@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เกณฑ์ให้คะแนน — ระบบจัดการหนังสือในห้องสมุด (ฉบับเก็บคะแนน)</title>
+<style>
+:root{--navy:#12304D; --cyan:#0E9BB8; --cyan-d:#0B7C94; --orange:#F2772E;
+      --green:#2EA064; --red:#C0392B;}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:'Prompt','Sarabun',sans-serif; background:#F2F5F8; color:#1E2D3D;
+     max-width:820px; margin:0 auto; padding:24px 18px 60px; line-height:1.75;}
+.tag{display:inline-block; background:var(--red); color:#fff; padding:3px 14px;
+     border-radius:999px; font-size:.8rem; font-weight:700; margin-bottom:6px;}
+h1{color:var(--navy); font-size:1.4rem; margin-bottom:4px;}
+.sub{color:#6A7A8A; font-size:.92rem; margin-bottom:18px;}
+table{width:100%; border-collapse:collapse; background:#fff; margin:12px 0;
+      border-radius:10px; overflow:hidden; box-shadow:0 1px 5px rgba(18,48,77,.09);}
+th{background:var(--navy); color:#fff; padding:11px 16px; text-align:left; font-size:.92rem;}
+td{padding:11px 16px; border-bottom:1px solid #e8eef3; font-size:.9rem;}
+tr:nth-child(even) td{background:#F7FAFC;}
+td.score{text-align:center; font-weight:700; color:var(--navy); white-space:nowrap;}
+tfoot td{background:var(--navy); color:#fff; font-weight:700;}
+.note{background:#FDECEA; border:2px solid var(--red); border-radius:10px;
+      padding:12px 18px; margin:16px 0; font-size:.9rem;}
+.note b{color:var(--red);}
+code{background:#EEF2F5; padding:2px 7px; border-radius:5px;
+     font-family:Consolas,monospace; font-size:.85rem; color:var(--navy);}
+a{color:var(--cyan-d);}
+</style>
+</head>
+<body>
+
+<div class="tag">ฉบับเก็บคะแนน — 10 คะแนน</div>
+<h1>เกณฑ์ให้คะแนน — ระบบจัดการหนังสือในห้องสมุด (ฉบับเก็บคะแนน)</h1>
+<div class="sub">เขียนส่วน backend (PHP) เองทั้งหมด — starter บอกเฉพาะสิ่งที่ต้องทำ ไม่มีโค้ดให้ลอก</div>
+
+<table>
+  <thead><tr><th>รายการ</th><th>ไฟล์ที่เกี่ยวข้อง</th><th>คะแนน</th></tr></thead>
+  <tbody>
+    <tr><td>authN — ล็อกอินตรวจรหัสผ่านถูกต้อง + ออกจากระบบครบ 3 ขั้น</td>
+        <td><code>login.php</code>, <code>logout.php</code></td><td class="score">2.0</td></tr>
+    <tr><td>authZ — แก้ไข/ลบได้เฉพาะข้อมูลของตัวเอง (ทั้ง UI และตรวจฝั่งเซิร์ฟเวอร์)</td>
+        <td><code>index.php</code>, <code>edit.php</code>, <code>delete.php</code></td><td class="score">2.0</td></tr>
+    <tr><td>Create — เพิ่มข้อมูลใหม่ด้วย prepared statement ถูกต้อง</td>
+        <td><code>create.php</code></td><td class="score">2.0</td></tr>
+    <tr><td>Read — แสดงรายการทั้งหมดพร้อมชื่อผู้เพิ่ม เรียงใหม่ไปเก่า</td>
+        <td><code>index.php</code></td><td class="score">1.0</td></tr>
+    <tr><td>Update — แก้ไขข้อมูลเดิมได้ถูกต้อง (รวมกรณีไม่เปลี่ยนรูป)</td>
+        <td><code>edit.php</code></td><td class="score">1.5</td></tr>
+    <tr><td>Delete — ลบข้อมูลได้ถูกต้อง</td>
+        <td><code>delete.php</code></td><td class="score">1.0</td></tr>
+    <tr><td>Upload — ใช้ safe_upload() ตรวจสอบไฟล์รูปก่อนบันทึกเสมอ</td>
+        <td><code>create.php</code>, <code>edit.php</code></td><td class="score">0.5</td></tr>
+  </tbody>
+  <tfoot><tr><td colspan="2">รวม</td><td class="score">10.0</td></tr></tfoot>
+</table>
+
+<div class="note">
+  <b>หักคะแนนทันทีถ้าพบ:</b> ต่อ string เข้า SQL ตรง ๆ แทนการใช้ prepared statement,
+  ไม่เช็ค owner_id ก่อนแก้ไข/ลบ (ให้แก้ไขข้อมูลคนอื่นได้), หรือไม่ใช้ safe_upload() ตรวจไฟล์ก่อนบันทึก
+</div>
+
+<p style="margin-top:18px; text-align:center">
+  <a href="ใบกิจกรรม.html">← กลับไปหน้าใบงาน</a> &nbsp;·&nbsp;
+  <a href="../index.html">กลับหน้าภาพรวมทั้งหมด</a>
+</p>
+
+</body>
+</html>
